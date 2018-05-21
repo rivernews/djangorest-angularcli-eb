@@ -1,4 +1,4 @@
-# Seed Template for Django + Angular/cli + RESTful framework + Elastic Beanstalk
+# Seed Template for Django + RESTful + Angular/cli + Elastic Beanstalk
 
 - Setup New Git Repo
   - Use gitignore python preset. *No need to add Node because Angular subfolder has its gitignore to handle Node ignore file.*
