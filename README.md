@@ -12,15 +12,21 @@
 - create virtual environment and activate it
 - `pip install -r requirements.txt`, requirements.txt as below:
 ```
+# for django and restful
+#
 django==1.11.13
 djangorestframework
 django-cors-headers==2.2.0
 
+
 # for heroku
-gunicorn==19.8.1
-django-heroku==0.3.1
+#
+# gunicorn==19.8.1
+# django-heroku==0.3.1
+
 
 # for AWS Elastic Beanstalk 
+#
 psycopg2
 mako
 awsebcli
