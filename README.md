@@ -1,6 +1,8 @@
 # Seed Template for Django + RESTful + Angular/cli + Elastic Beanstalk
 
-If you use this template as seed, git clone/fork it and if you need to change the git repo to push to, use
+If you use this template as seed, git clone/fork it and you can start from section [Setup Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-django).
+
+If you need to change the git repo to push to, use
 ```
 git remote set-url origin <your git repo url, same as the one for clone>
 git remote -v # souble check repo set correctly
@@ -12,9 +14,9 @@ If you want to show hidden files in Mac, press Command + Shift + .
 
 - [Setup New Git Repo](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-new-git-repo)
 - [Setup Environment](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-environment)
-- [Setup Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-django)
+- [Setup Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-django) *If you use this repo as seed, you can start here and skip previous sections.*
 - [Setup RESTful framework](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-restful-framework)
-- [Bootstrap & Setup Angular under Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup--bootstrap-angular-under-django)
+- [Bootstrap & Setup Angular under Django](#bootstrap-and-setup-angular-under-django)
 - [Deploy To Elastic Beanstalk](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-elastic-beanstalk)
     - [Connect to database on Amazon RDS from GUI Client or Heroku](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
 - [NEXT Angular](#next-angular)
@@ -87,7 +89,7 @@ AUTHENTICATION_BACKENDS = [
 - TODO: Setup security: require login or certain user to access API.
 - **TODO: Angular try to request a POST, see if no error**
 
-## Bootstrap & Setup Angular under Django
+## Bootstrap And Setup Angular under Django
 
 *words in **bold** are needed after editing Angular code and want to run the project in Django.*
 
