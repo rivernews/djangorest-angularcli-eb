@@ -172,7 +172,7 @@ We'll mainly use [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutori
 
 Have your model.py ready, and please keep reading if you have existing data to import. This instruction we create a new database (if you already have a online database to use please skip db creation parts). If you need to import data, you may want to use local database GUI client. This instruction we use PostgreSQL, you can use DBeaver (use Java) or PgAdmim.
 
-- Copy `requirements.txt` into django root directory (in `git_repo_root/backend`)
+- Copy `requirements.txt` into django root directory (in `git_repo_root/backend`). We will only deploy the code in `backend/`.
 - Get in django root `cd backend` and `eb init` will give interactive prompt:
   - select data center location. Use US East (Ohio) to have best proximity for Mid-West area.
   - choose CNAME (prefix for the website URL)
@@ -235,7 +235,7 @@ if 'RDS_DB_NAME' in os.environ:
 
 This is a simplify/skipped version of previous section. For details on each step you can refer to previous section [Deploy by creating new database](#deploy-by-creating-new-database)
 
-- secure `requirements.txt`
+- remember to put `requirements.txt` in backend subfolder! 
 - go to subfolder for django backend, `eb init`, fill in all info.
   - refer to previous section for more info.
 - edit local `python.config` without including migrate command under `container_commands:`
