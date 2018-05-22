@@ -120,26 +120,26 @@ Have your model.py ready, and please keep reading if you have existing data to i
 - Local project config for eb
   - create the folder & file `.ebextensions/python.config`
   - in `python.config` write
-  ```
-  container_commands:
-    migrate:
-      command: "python manage.py migrate"
-      leader_only: true
-    collectstatic:
-      command: "python manage.py collectstatic --noinput"
+```
+container_commands:
+  migrate:
+    command: "python manage.py migrate"
+    leader_only: true
+  collectstatic:
+    command: "python manage.py collectstatic --noinput"
 
-  option_settings:
-    "aws:elasticbeanstalk:application:environment":
-      DJANGO_SETTINGS_MODULE: "backend.settings"
-      PYTHONPATH: "$PYTHONPATH"
-    "aws:elasticbeanstalk:container:python":
-      WSGIPath: "backend/wsgi.py"
-      StaticFiles: "/static/=www/static/"
+option_settings:
+  "aws:elasticbeanstalk:application:environment":
+    DJANGO_SETTINGS_MODULE: "backend.settings"
+    PYTHONPATH: "$PYTHONPATH"
+  "aws:elasticbeanstalk:container:python":
+    WSGIPath: "backend/wsgi.py"
+    StaticFiles: "/static/=www/static/"
 
-  packages:
-    yum:
-      postgresql95-devel: []
-  ```
+packages:
+  yum:
+    postgresql95-devel: []
+```
   - make sure in Django settings you have `STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")`
   - to connect to Amazon's RDS database, add in Django settings:
 ```
@@ -166,7 +166,9 @@ if 'RDS_DB_NAME' in os.environ:
 
 - From now on, do your work, commit git, then do `eb deploy`
 
-### Connect to Postgres database on Amazon RDS from App or Heroku
+### Connect to database on Amazon RDS from GUI Client or Heroku
+
+Using Postgres database here.
 
 - Edit amazon RDS permission, follow instructions below or see [heroku doc](https://devcenter.heroku.com/articles/amazon-rds) or [here](https://stackoverflow.com/questions/47661151/connecting-to-rds-postgres-from-heroku)
   1. let RDS always require SSL
