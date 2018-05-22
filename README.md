@@ -30,7 +30,6 @@ If you want to show hidden files in Mac, press Command + Shift + .
  
 ## Setup Environment
 
-- create virtual environment and activate it
 - `pip install -r requirements.txt`, requirements.txt as below:
 ```
 # for django and restful
@@ -48,6 +47,7 @@ awsebcli
 
 ## Setup Django
 
+- create virtual environment and activate it
 - `./manage.py startproject backend .` **Make sure you add a DOT "." at the end!** This collects all django files in one folder except manage.py
 - In settings.py 
   - add `‘corsheaders’,` to INSTALLED_APP
