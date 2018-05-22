@@ -1,22 +1,15 @@
 # Seed Template for Django + RESTful + Angular/cli + Elastic Beanstalk
 
-Table of Contents
+## Table of Contents
 
-[Setup New Git Repo](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-new-git-repo)
-
-[Setup Environment](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-environment)
-
-[Setup Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-django)
-
-[Setup RESTful framework](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-restful-framework)
-
-[Bootstrap & Setup Angular under Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup--bootstrap-angular-under-django)
-
-[Deploy To Elastic Beanstalk](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-elastic-beanstalk)
-
-  [Connect to database on Amazon RDS from GUI Client or Heroku](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
-
-[NEXT Angular](#next-angular)
+- [Setup New Git Repo](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-new-git-repo)
+- [Setup Environment](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-environment)
+- [Setup Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-django)
+- [Setup RESTful framework](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-restful-framework)
+- [Bootstrap & Setup Angular under Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup--bootstrap-angular-under-django)
+- [Deploy To Elastic Beanstalk](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-elastic-beanstalk)
+    - [Connect to database on Amazon RDS from GUI Client or Heroku](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
+- [NEXT Angular](#next-angular)
 
 ## Setup New Git Repo
 
