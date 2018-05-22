@@ -40,6 +40,8 @@ frontend-bundle-dist
  
 ## Setup Environment
 
+You can 
+
 - create virtual environment and activate it. Name the virtual environment with one of the below:
 ```
 .env
@@ -81,22 +83,22 @@ awsebcli
 
 Following [this tutorial](https://www.techiediaries.com/django-angular-cli/).
 
-- `django-admin startproject backend .` **Make sure you add a DOT "." at the end!** This collects all django files in one folder except manage.py
+- `cd your_git_repo_root/backend`, then `django-admin startproject django_backend .` **Make sure you add a DOT "." at the end!** This collects all django files in one folder except manage.py
 - In settings.py 
-  - add `‘corsheaders’,` to INSTALLED_APP
-  - add `'corsheaders.middleware.CorsMiddleware',` to MIDDLEWARE
+  - add `corsheaders` to INSTALLED_APP
+  - add `corsheaders.middleware.CorsMiddleware` to MIDDLEWARE
   - add line `CORS_ORIGIN_ALLOW_ALL = True`
  
  *can now accept POST/GET request from different origin/port if you use both node and django server. In production & this guide we'll only use Django as server, so we may not need CORS in this case.*
 
 ## Bootstrap Angular under Django
 
-- Add /dist/ in django static settings
+- Add Angular's `/dist/` in django static settings
 ```
 ...
 STATIC_URL = '/static/'
 ...
-ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'angular-frontend/dist/angular-frontend') # django input static
+ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'frontend-bundle-dist') # django input static
 
 STATICFILES_DIRS = [
     os.path.join(ANGULAR_APP_DIR), # additional path for django to collect static
@@ -105,9 +107,12 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static') # django output static. collectstatic will put the collected static files in STATIC_ROOT. www is for Elastic Beanstalk
 ```
 - Let Django collect all static files `./manage.py collectstatic --noinput`
-- Let Django serve angular’s `index.html` as start point && add routing for any Angular /static/ request, in Django project-wide url.py add (referring to [this post](https://www.techiediaries.com/django-angular-cli/))
+- Let Django serve angular’s `index.html` as start point && add routing for any Angular /static/ request. In Django project-wide `url.py` add (referring to [this post](https://www.techiediaries.com/django-angular-cli/))
 ```
 # Static file end point
+...
+from django.contrib.staticfiles.views import serve
+from django.views.generic import RedirectView
 ...
 url(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
     RedirectView.as_view(url='/static/%(path)s', permanent=False)), # alter static access url
@@ -161,7 +166,8 @@ We'll mainly use [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutori
 
 Have your model.py ready, and please keep reading if you have existing data to import. This instruction we create a new database (if you already have a online database to use please skip db creation parts). If you need to import data, you may want to use local database GUI client. This instruction we use PostgreSQL, you can use DBeaver (use Java) or PgAdmim.
 
-- To project root directory, `eb init` will give interactive prompt:
+- Copy `requirements.txt` into django root directory (in `git_repo_root/backend`)
+- Get in django root `cd backend` and `eb init` will give interactive prompt:
   - select data center location. Use US East (Ohio) to have best proximity for Mid-West area.
   - choose CNAME (prefix for the website URL)
   - get a aws credential and insert. IAM. Follow [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutorial-django-elastic-beanstalk/). If you already have aws credential, you can skip steps below and enter those keys.
