@@ -1,5 +1,11 @@
 # Seed Template for Django + RESTful + Angular/cli + Elastic Beanstalk
 
+If you use this template as seed, git clone/fork it and if you need to change the git repo to push to, use
+```
+git remote set-url origin <your git repo url, same as the one for clone>
+git remote -v # souble check repo set correctly
+```
+
 ## Table of Contents
 
 - [Setup New Git Repo](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-new-git-repo)
