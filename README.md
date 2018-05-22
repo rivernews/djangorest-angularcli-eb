@@ -1,6 +1,6 @@
 # Seed Template for Django + RESTful + Angular/cli + Elastic Beanstalk
 
-If you use this template as seed, git clone/fork it and you can start from section [Setup Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-django).
+If you use this template as seed, git clone/fork it and you can start from section [Setup Environment](# setup-environment).
 
 If you need to change the git repo to push to, use
 ```
@@ -30,6 +30,14 @@ If you want to show hidden files in Mac, press Command + Shift + .
  
 ## Setup Environment
 
+- create virtual environment and activate it. Name the virtual environment with one of the below:
+```
+.env
+.venv
+env
+venv
+ENV
+```
 - `pip install -r requirements.txt`, requirements.txt as below:
 ```
 # for django and restful
@@ -47,14 +55,6 @@ awsebcli
 
 ## Setup Django
 
-- create virtual environment and activate it. Name the virtual environment with one of the below:
-```
-.env
-.venv
-env
-venv
-ENV
-```
 - `./manage.py startproject backend .` **Make sure you add a DOT "." at the end!** This collects all django files in one folder except manage.py
 - In settings.py 
   - add `‘corsheaders’,` to INSTALLED_APP
