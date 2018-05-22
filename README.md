@@ -1,6 +1,6 @@
 # Seed Template for Django + RESTful + Angular/cli + Elastic Beanstalk
 
-If you use this template as seed, git clone/fork it and you can start from section [Setup Environment](# setup-environment).
+If you use this template as seed, git clone/fork it and you can start from section [Setup Environment](#setup-environment).
 
 If you need to change the git repo to push to, use
 ```
