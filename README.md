@@ -12,13 +12,13 @@ If you want to show hidden files in Mac, press Command + Shift + .
 
 ## Table of Contents
 
-- [Setup New Git Repo](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-new-git-repo)
-- [Setup Environment](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-environment)
-- [Setup Django](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-django) *If you use this repo as seed, you can start here and skip previous sections.*
-- [Setup RESTful framework](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-restful-framework)
+- [Setup New Git Repo](#setup-new-git-repo)
+- [Setup Environment](#setup-environment) *If you use this repo as seed, you can start here and skip previous sections.*
+- [Setup Django](#setup-django)
+- [Setup RESTful framework](#setup-restful-framework)
 - [Bootstrap & Setup Angular under Django](#bootstrap-and-setup-angular-under-django)
-- [Deploy To Elastic Beanstalk](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-elastic-beanstalk)
-    - [Connect to database on Amazon RDS from GUI Client or Heroku](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
+- [Deploy To Elastic Beanstalk](#deploy-to-elastic-beanstalk)
+    - [Connect to database on Amazon RDS from GUI Client or Heroku](#connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
 - [NEXT Angular](#next-angular)
 
 ## Setup New Git Repo
