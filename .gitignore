@@ -1,6 +1,7 @@
 # Iriversland
 /staticfiles
 /static
+frontend-bundle-dist
 .DS_Store
 
 # Byte-compiled / optimized / DLL files

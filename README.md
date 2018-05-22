@@ -58,9 +58,15 @@ awsebcli
 
 *words in **bold** are needed after editing Angular code and want to run the project in Django.*
 
-- `ng new frontend`
-- `ng serve --open` to start Node server and open in browser.
-- **`ng build` to create /dist/**
+- In git repo root directory, run `ng new frontend`
+- `ng serve --open` to start Node server and open in browser, if tested OK then `ctrl+c` to close it.
+- In `angular.json` change the /dist/ output path:
+```
+...
+"outputPath": "../backend/frontend-bundle-dist",
+...
+```
+- `cd frontend`, then **`ng build` to create /dist/**
 - In Angular's app subfolder edit its gitignore to remove `/dist/` from ignored. We'll need `/dist/` for Django to `collectstatic`.
 
 ## Setup Django
