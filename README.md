@@ -242,7 +242,7 @@ This is a simplify/skipped version of previous section. For details on each step
 - double check django settings you have `www` in `STATIC_ROOT`
 - `eb create --scale 1`
   - refer to previous section for more info.
-- test your deployed website!
+- test your deployed website! **TODO: We stopped here!**
 - from now on, do git add commit push, then `eb deploy`
 
 
