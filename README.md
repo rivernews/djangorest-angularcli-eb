@@ -55,7 +55,7 @@ awsebcli
 
 ## Setup Django
 
-Following [this tutorial](https://www.techiediaries.com/django-angular-cli/)
+Following [this tutorial](https://www.techiediaries.com/django-angular-cli/).
 
 - `django-admin startproject backend .` **Make sure you add a DOT "." at the end!** This collects all django files in one folder except manage.py
 - In settings.py 
