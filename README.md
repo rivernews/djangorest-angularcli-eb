@@ -18,13 +18,6 @@ django==1.11.13
 djangorestframework
 django-cors-headers==2.2.0
 
-
-# for heroku
-#
-# gunicorn==19.8.1
-# django-heroku==0.3.1
-
-
 # for AWS Elastic Beanstalk 
 #
 psycopg2
@@ -129,24 +122,68 @@ Have your model.py ready, and please keep reading if you have existing data to i
   - in `python.config` write
   ```
   container_commands:
-  01_migrate:
-    command: "python manage.py migrate"
-    leader_only: true
-  collectstatic:
-    command: "python manage.py collectstatic --noinput"
+    migrate:
+      command: "python manage.py migrate"
+      leader_only: true
+    collectstatic:
+      command: "python manage.py collectstatic --noinput"
 
   option_settings:
     "aws:elasticbeanstalk:application:environment":
-      DJANGO_SETTINGS_MODULE: "django_backend.settings"
+      DJANGO_SETTINGS_MODULE: "backend.settings"
       PYTHONPATH: "$PYTHONPATH"
     "aws:elasticbeanstalk:container:python":
-      WSGIPath: "django_backend/wsgi.py"
+      WSGIPath: "backend/wsgi.py"
       StaticFiles: "/static/=www/static/"
 
   packages:
     yum:
       postgresql95-devel: []
   ```
+  - make sure in Django settings you have `STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")`
+  - to connect to Amazon's RDS database, add in Django settings:
+```
+if 'RDS_DB_NAME' in os.environ:
+    # deployed on amz
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
+```
+
+- git add, git commit, then `eb create --scale 1 -db -db.engine postgres -db.i db.t2.micro`  
+  - or you can add existing db later and just do `eb create --scale 1`. See how to [add existing db to a deployment](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.managing.db.html?icmpid=docs_elasticbeanstalk_console).
+  - some interactive prompts. Refer to tutorial for details.
+  - you can check [Elastic Beanstalk Main Page](https://console.aws.amazon.com/elasticbeanstalk/home) for deployment status.
+
+*this will start deploying to eb for the very first time.*
+
+- From now on, do your work, commit git, then do `eb deploy`
+
+### Connect to Postgres database on Amazon RDS from App or Heroku
+
+- Edit amazon RDS permission, follow instructions below or see [heroku doc](https://devcenter.heroku.com/articles/amazon-rds) or [here](https://stackoverflow.com/questions/47661151/connecting-to-rds-postgres-from-heroku)
+  1. let RDS always require SSL
+    - **Amazon RDS/Parameter Groups**: Create a new parameter group to [force ssl](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.SSL), if you don’t already have such group.
+    - **Amazon RDS/Instance/modify database/DB parameter group:** enable group for ssl
+  2. reboot the RDS instance immediately to force SSL!
+  3. let RDS allow all inbound IP: Security Group (the one used by db)/Inbound: create rule for all traffic.
+  4. let local/client db connection use SSL
+    - turn on ssl, use `sslmode=require` *the amz official and heroku ask you to use `sslmode=verify-full`; then download a [certificate](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.SSL) and using it with the connection by specifying its file path in `sslrootcert=...`; however, you can just use `require` if that works for you*
+- get a decent database GUI client. DBeaver is OK. Can try [PgAdmin](https://www.pgadmin.org/).
+  - test the connection. just hardcode the credentials e.g. db name/password obtained from the RDS console.
+- Done!
+- **TODO: Domain name - it's ugly now. how to change it?**
+- future: [separate front/back end on different platform](https://stackoverflow.com/questions/41247687/how-to-deploy-separated-frontend-and-backend)
+  - Frontend: GitHub Pages + CloudFlare
+  - Backend: beanstalk
+  - Cross domain setting: jwt
 
 ## NEXT - Angular: how to do rounting, page layout rendering, and more.
 
