@@ -237,11 +237,18 @@ This is a simplify/skipped version of previous section. For details on each step
 
 - secure `requirements.txt`
 - go to subfolder for django backend, `eb init`, fill in all info.
+  - refer to previous section for more info.
 - edit local `python.config` without including migrate command under `container_commands:`
 - double check django settings you have `www` in `STATIC_ROOT`
 - `eb create --scale 1`
+  - refer to previous section for more info.
 - test your deployed website!
 - from now on, do git add commit push, then `eb deploy`
+
+
+### TODO: Attach an existing database to website
+
+
 
 
 ### Connect to database on Amazon RDS from GUI Client or Heroku
