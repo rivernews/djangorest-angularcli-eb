@@ -126,6 +126,8 @@ url(r'^$', serve, kwargs={'path': 'index.html'}), # use static to serve template
 
 ## Setup Database
 
+**TODO: we stopped here!**
+
 Setup database models. Our policy: we'll create one app for dealing with user account and one app for api. Depending on your needs, you can create other django apps like blog for posts, ..., etc. Also, models (defines database table schema) will live in each app it relates to, e.g., `CustomUser` model will live in `account/model.py`, `Post` model will live in `blog/model.py`.
 
 - create app by `./manage.py startapp account`
