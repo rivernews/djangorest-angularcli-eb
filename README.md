@@ -1,5 +1,15 @@
 # Seed Template for Django + RESTful + Angular/cli + Elastic Beanstalk
 
+Table of Contents
+[Setup New Git Repo]
+[Setup Environment]
+[Setup Django]
+[Setup RESTful framework]
+[Bootstrap & Setup Angular under Django]
+[Deploy To Elastic Beanstalk]
+  [Connect to database on Amazon RDS from GUI Client or Heroku]
+[NEXT Angular](#next-angular)
+
 ## Setup New Git Repo
 
 - Use gitignore python preset. *No need to add Node because Angular subfolder has its gitignore to handle Node ignore file.*
@@ -68,7 +78,7 @@ AUTHENTICATION_BACKENDS = [
 - TODO: Setup security: require login or certain user to access API.
 - **TODO: Angular try to request a POST, see if no error**
 
-## Setup & Bootstrap Angular under Django
+## Bootstrap & Setup Angular under Django
 
 *words in **bold** are needed after editing Angular code and want to run the project in Django.*
 
@@ -103,7 +113,7 @@ url(r'^$', serve, kwargs={'path': 'index.html'}), # use static to serve template
 
 - Test if Django serves our Angular! `./manage.py runserver` and open your browser to `localhost:8000/`
 
-## Setup Elastic Beanstalk
+## Deploy To Elastic Beanstalk
 
 We'll mainly use [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutorial-django-elastic-beanstalk/) to deploy Django to Elastic Beanstalk.
 
@@ -187,6 +197,8 @@ Using Postgres database here.
   - Backend: beanstalk
   - Cross domain setting: jwt
 
-## NEXT - Angular: how to do rounting, page layout rendering, and more.
+## NEXT Angular
+
+How to do rounting, page layout rendering, and more.
 
 - Keep following the official hero tutorial.
