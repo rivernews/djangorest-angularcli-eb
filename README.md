@@ -17,6 +17,7 @@ If you want to show hidden files in Mac, press Command + Shift + .
 - [Setup Angular](#setup-angular)
 - [Setup Django](#setup-django)
 - [Bootstrap Angular under Django](#bootstrap-angular-under-django)
+- [Setup Database](#setup-database)
 - [Setup RESTful framework](#setup-restful-framework)
 - [Deploy To Elastic Beanstalk](#deploy-to-elastic-beanstalk)
     - [Connect to database on Amazon RDS from GUI Client or Heroku](#connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
@@ -88,19 +89,6 @@ Following [this tutorial](https://www.techiediaries.com/django-angular-cli/).
  
  *can now accept POST/GET request from different origin/port if you use both node and django server. In production & this guide we'll only use Django as server, so we may not need CORS in this case.*
 
-- Setup database models. Our policy: we'll create one app for dealing with user account and one app for api. Depending on your needs, you can create other django apps like blog for posts, ..., etc. Also, models (defines database table schema) will live in each app it relates to, e.g., `CustomUser` model will live in `account/model.py`, `Post` model will live in `blog/model.py`.
-  - create app by `./manage.py startapp account`
-    - edit `account/model.py`, write `from django.contrib.auth.models import AbstractUser` then `class CustomUser(AbstractUser):`. Let's have user's email unique so you have the option to login by email, follow [this SO post](https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django). Add email (also first/last name if you want) to `REQUIRED_FIELDS` in `CustomUser`.
-    - edit django settings.py
-```
-AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
-```
-  - create app by `./manage.py startapp api`
-  - create app by `./manage.py startapp blog`. This is optional. You may want other app names based on your project needs. In this instruction we'll use blog as an example to build a blog in our website.
-    - Setup `blog/model.py` for posts, add a `Post` class and specify necessary fields.
-- `./manage.py makemigrations` then `./manage.py migrate`
-  - Optional, you can create a super user to access to local database.
-
 ## Bootstrap Angular under Django
 
 - Add /dist/ in django static settings
@@ -130,6 +118,22 @@ url(r'^$', serve, kwargs={'path': 'index.html'}), # use static to serve template
 ```
 
 - Test if Django serves our Angular! `./manage.py runserver` and open your browser to `localhost:8000/`
+
+## Setup Database
+
+Setup database models. Our policy: we'll create one app for dealing with user account and one app for api. Depending on your needs, you can create other django apps like blog for posts, ..., etc. Also, models (defines database table schema) will live in each app it relates to, e.g., `CustomUser` model will live in `account/model.py`, `Post` model will live in `blog/model.py`.
+
+- create app by `./manage.py startapp account`
+  - edit `account/model.py`, write `from django.contrib.auth.models import AbstractUser` then `class CustomUser(AbstractUser):`. Let's have user's email unique so you have the option to login by email, follow [this SO post](https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django). Add email (also first/last name if you want) to `REQUIRED_FIELDS` in `CustomUser`.
+  - edit django settings.py
+```
+AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
+```
+  - create app by `./manage.py startapp api`
+  - create app by `./manage.py startapp blog`. This is optional. You may want other app names based on your project needs. In this instruction we'll use blog as an example to build a blog in our website.
+    - Setup `blog/model.py` for posts, add a `Post` class and specify necessary fields.
+- `./manage.py makemigrations` then `./manage.py migrate`
+  - Optional, you can create a super user to access to local database.
 
 ## Setup RESTful framework
 
