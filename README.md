@@ -15,7 +15,7 @@
 
 - Use gitignore python preset. *No need to add Node because Angular subfolder has its gitignore to handle Node ignore file.*
 - git clone
-- Gitignore exclude django root `/staticfiles` or `/static`, include `/dist/` for Angular
+- Gitignore exclude django root `/staticfiles` or `/static`
 - git add commit push
  
 ## Setup Environment
@@ -86,6 +86,7 @@ AUTHENTICATION_BACKENDS = [
 - `ng new frontend`
 - `ng serve --open` to start Node server and open in browser.
 - `ng build` to create /dist/
+- In Angular's app subfolder edit its gitignore to remove `/dist/` from ignored. We'll need `/dist/` for Django to `collectstatic`.
 - Add /dist/ in django static settings
 ```
 ...
