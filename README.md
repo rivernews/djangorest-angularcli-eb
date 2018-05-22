@@ -47,7 +47,14 @@ awsebcli
 
 ## Setup Django
 
-- create virtual environment and activate it
+- create virtual environment and activate it. Name the virtual environment with one of the below:
+```
+.env
+.venv
+env
+venv
+ENV
+```
 - `./manage.py startproject backend .` **Make sure you add a DOT "." at the end!** This collects all django files in one folder except manage.py
 - In settings.py 
   - add `‘corsheaders’,` to INSTALLED_APP
