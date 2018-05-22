@@ -6,6 +6,8 @@ git remote set-url origin <your git repo url, same as the one for clone>
 git remote -v # souble check repo set correctly
 ```
 
+If you want to show hidden files in Mac, press Command + Shift + .
+
 ## Table of Contents
 
 - [Setup New Git Repo](https://github.com/rivernews/djangorest-angularcli-eb/blob/master/README.md#setup-new-git-repo)
