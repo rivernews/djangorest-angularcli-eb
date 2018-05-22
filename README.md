@@ -55,7 +55,7 @@ awsebcli
 
 ## Setup Django
 
-- `./manage.py startproject backend .` **Make sure you add a DOT "." at the end!** This collects all django files in one folder except manage.py
+- `django-admin startproject backend .` **Make sure you add a DOT "." at the end!** This collects all django files in one folder except manage.py
 - In settings.py 
   - add `‘corsheaders’,` to INSTALLED_APP
   - add `'corsheaders.middleware.CorsMiddleware',` to MIDDLEWARE
