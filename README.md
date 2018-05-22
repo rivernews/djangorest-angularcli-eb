@@ -26,7 +26,15 @@ If you want to show hidden files in Mac, press Command + Shift + .
 
 - Use gitignore python preset. *No need to add Node because Angular subfolder has its gitignore to handle Node ignore file.*
 - git clone
-- Gitignore exclude django root `/staticfiles` or `/static`
+- `.gitignore` add:
+```
+# Iriversland
+/staticfiles
+/static
+frontend-bundle-dist
+.DS_Store
+...
+```
 - git add commit push
  
 ## Setup Environment
@@ -66,8 +74,7 @@ awsebcli
 "outputPath": "../backend/frontend-bundle-dist",
 ...
 ```
-- `cd frontend`, then **`ng build` to create /dist/**
-- In Angular's app subfolder edit its gitignore to remove `/dist/` from ignored. We'll need `/dist/` for Django to `collectstatic`.
+- `cd frontend`, then **`ng build` to create frontend distribution bundles**
 
 ## Setup Django
 
