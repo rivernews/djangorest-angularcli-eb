@@ -224,7 +224,6 @@ Have your model.py ready, and please keep reading if you have existing data to i
 - Get in django root `cd backend` and `eb init` will give interactive prompt:
   - select data center location. 
     - Use US East (Ohio) to have best proximity for Mid-West area. `us-east-2 : US East (Ohio)`.
-  - choose CNAME (prefix for the website URL)
   - get a aws credential and insert. IAM. Follow [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutorial-django-elastic-beanstalk/). If you already have aws credential, you can skip steps below and enter those keys.
     - Go to [IAM website](https://console.aws.amazon.com/iam/home)
     - goto left side bar: User --> add user --> check programmatic access --> next
@@ -232,7 +231,7 @@ Have your model.py ready, and please keep reading if you have existing data to i
     - save secret keys, enter these keys in console prompt
 - Local project config for eb
   - django settings add CNAME (website domain URL) to `ALLOWED_HOSTS`
-    - for example (Ohio), `http://<your app name>.us-east-2.elasticbeanstalk.com`
+    - for example (Ohio), `http://<your app name>-dev.us-east-2.elasticbeanstalk.com`
   - create the folder & file `.ebextensions/python.config`
   - in `python.config` write
 ```
@@ -275,6 +274,7 @@ if 'RDS_DB_NAME' in os.environ:
 - git add, git commit, then `eb create --scale 1 -db -db.engine postgres -db.i db.t2.micro`  
   - or you can add existing db later and just do `eb create --scale 1`. See how to [add existing db to a deployment](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.managing.db.html?icmpid=docs_elasticbeanstalk_console).
   - some interactive prompts. Refer to tutorial for details.
+    - choose CNAME (prefix for the website URL). As a convention, use `<your app name>-dev`. **If you choose your own CNAME not following this convention, please alter django settings ALLOWED_HOSTS correspondingly.**
   - you can check [Elastic Beanstalk Main Page](https://console.aws.amazon.com/elasticbeanstalk/home) for deployment status.
 
 *this will start deploying to eb for the very first time.*
