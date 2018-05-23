@@ -233,7 +233,7 @@ Have your model.py ready, and please keep reading if you have existing data to i
     - save secret keys, enter these keys in console prompt
 - Local project config for eb
   - django settings add CNAME (website domain URL) to `ALLOWED_HOSTS`
-    - for example (Ohio), `http://<your app name>-dev.us-east-2.elasticbeanstalk.com`
+    - for example (Ohio), `<your app name>-dev.us-east-2.elasticbeanstalk.com`. Do not include `http://`.
   - create the folder & file `.ebextensions/python.config`
   - in `python.config` write
 ```
@@ -305,9 +305,15 @@ Using Postgres database here.
   - Cross domain setting: jwt
 
 
+### (Optional) Linking a domain name to EB website
+
+Follow [this tutorial](https://medium.com/@ryan_waits/using-aws-elastic-beanstalk-and-namecheap-to-deploy-and-host-your-node-js-app-dc4129d0eb2c). You can refer to [this article](https://nikhilmopidevi.github.io/2017/10/15/Namecheap-Domain-with-AWS/) too, but please mainly follow the first article (some parts are contradicted).
+
 ## Setup RESTful framework
 
 **TODO: skipped**
+
+*Update: might be worth of looking at this [newer tutorial](https://medium.com/riow/django-api-project-from-scratch-5cc5d3b11c88). More simple and clean.*
 
 Following [official quickstart tutorial](http://www.django-rest-framework.org/tutorial/quickstart/). Particularly, focus on the high level:
 
