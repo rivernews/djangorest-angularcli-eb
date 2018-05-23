@@ -288,6 +288,8 @@ if 'RDS_DB_NAME' in os.environ:
 
 You probably want to do this to create a super user on the newly created RDS database of our deployment (still you can use something like `eb ssl` to connect to EB shell but it's more complicated). If you have a superuser permission, you can make good use of Django's Admin console to view the data entries in database. Using Postgres database here.
 
+Or, more convenient, you can let Django always connect to Amazon RDS even developing on local, so you are always synced and have single database settings over development and production.
+
 - Edit amazon RDS permission, follow instructions below or see [heroku doc](https://devcenter.heroku.com/articles/amazon-rds) or [here](https://stackoverflow.com/questions/47661151/connecting-to-rds-postgres-from-heroku)
   - let RDS always require SSL
     - **Amazon RDS/Parameter Groups**: Create a new parameter group to [force ssl](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.SSL), if you don’t already have such group.
