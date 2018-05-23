@@ -284,9 +284,9 @@ if 'RDS_DB_NAME' in os.environ:
 - From now on, do your work, commit git, then do `eb deploy`
 
 
-### (Optional) Connect to database on Amazon RDS from GUI Client or Heroku
+### Connect to database on Amazon RDS from GUI Client or Heroku
 
-Using Postgres database here.
+You probably want to do this to create a super user on the newly created RDS database of our deployment (still you can use something like `eb ssl` to connect to EB shell but it's more complicated). If you have a superuser permission, you can make good use of Django's Admin console to view the data entries in database. Using Postgres database here.
 
 - Edit amazon RDS permission, follow instructions below or see [heroku doc](https://devcenter.heroku.com/articles/amazon-rds) or [here](https://stackoverflow.com/questions/47661151/connecting-to-rds-postgres-from-heroku)
   - let RDS always require SSL
@@ -296,7 +296,7 @@ Using Postgres database here.
   - let RDS allow all inbound IP: Security Group (the one used by db)/Inbound: create rule for all traffic.
   - let local/client db connection use SSL
     - turn on ssl, use `sslmode=require` *the amz official and heroku ask you to use `sslmode=verify-full`; then download a [certificate](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.SSL) and using it with the connection by specifying its file path in `sslrootcert=...`; however, you can just use `require` if that works for you*
-- get a decent database GUI client. DBeaver is OK. Can try [PgAdmin](https://www.pgadmin.org/).
+- get a decent database GUI client. DBeaver is OK. Can try [PgAdmin](https://www.pgadmin.org/) or [Postico](https://eggerapps.at/postico/).
   - test the connection. just hardcode the credentials e.g. db name/password obtained from the RDS console.
 - Done!
 - future: [separate front/back end on different platform](https://stackoverflow.com/questions/41247687/how-to-deploy-separated-frontend-and-backend)
@@ -305,7 +305,9 @@ Using Postgres database here.
   - Cross domain setting: jwt
 
 
-### (Optional) Linking a domain name to EB website
+### Linking a domain name to EB website
+
+This instruction we use a domain name purchased from other vendor. If you don't have a domain name, consider purchasing one on Amazon Route 53 (for a better integrated experience).
 
 - Follow [this tutorial](https://medium.com/@ryan_waits/using-aws-elastic-beanstalk-and-namecheap-to-deploy-and-host-your-node-js-app-dc4129d0eb2c). You can refer to [this article](https://nikhilmopidevi.github.io/2017/10/15/Namecheap-Domain-with-AWS/) too, but please mainly follow the first article (some parts are contradicted).
 
