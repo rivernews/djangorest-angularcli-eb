@@ -239,7 +239,7 @@ if 'RDS_DB_NAME' in os.environ:
 - From now on, do your work, commit git, then do `eb deploy`
 
 
-### Connect to database on Amazon RDS from GUI Client or Heroku
+### (Optional) Connect to database on Amazon RDS from GUI Client or Heroku
 
 Using Postgres database here.
 
