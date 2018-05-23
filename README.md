@@ -40,7 +40,7 @@ frontend-bundle-dist
  
 ## Setup Environment
 
-You can 
+You can skip this section by running the script `setup-python-env.sh` under `/backend`.
 
 - create virtual environment and activate it. Name the virtual environment with one of the below:
 ```
