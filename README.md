@@ -132,7 +132,28 @@ url(r'^$', serve, kwargs={'path': 'index.html'}), # use static to serve template
 Setup database models. Our policy: we'll create one app for dealing with user account and one app for api. Depending on your needs, you can create other django apps like blog for posts, ..., etc. Also, models (defines database table schema) will live in each app it relates to, e.g., `CustomUser` model will live in `account/model.py`, `Post` model will live in `blog/model.py`.
 
 - create app by `./manage.py startapp account`
-  - edit `account/model.py`, write `from django.contrib.auth.models import AbstractUser` then `class CustomUser(AbstractUser):`. Let's have user's email unique so you have the option to login by email, follow [this SO post](https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django). Add email (also first/last name if you want) to `REQUIRED_FIELDS` in `CustomUser`.
+  - edit `account/model.py`, following [this SO post](https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django).
+```
+from django.db import models
+
+from django.contrib.auth.models import AbstractUser # override default user model 'from django.contrib.auth.models import User'
+
+# Custom user model
+# https://docs.djangoproject.com/en/2.0/topics/auth/customizing/#specifying-a-custom-user-model
+
+class CustomUser(AbstractUser):
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name'] # will prompt these when do createsuperuser
+
+    def __init__(self, *args, **kwargs):
+        self._meta.get_field('email').blank = False # alter the value in AbstractUser w/o additional settings: https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django
+        self._meta.get_field('email')._unique = True
+        self._meta.get_field('first_name').blank = False
+        self._meta.get_field('last_name').blank = False
+        super(CustomUser, self).__init__(*args, **kwargs)
+    
+    def __str__(self):
+        return self.email
+```
   - edit django settings.py
 ```
 AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
@@ -140,8 +161,36 @@ AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
   - create app by `./manage.py startapp api`
   - create app by `./manage.py startapp blog`. This is optional. You may want other app names based on your project needs. In this instruction we'll use blog as an example to build a blog in our website.
     - Setup `blog/model.py` for posts, add a `Post` class and specify necessary fields.
+```
+from django.conf import settings
+from django.db import models
+
+class Post(models.Model):
+	title = models.CharField(max_length=100)
+	
+	user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, # or you can use '[from django.contrib.auth import get_user_model]' then get_user_model(). but only use these in models; you should use account.model.User anywhere else.
+        null=True, # you have to use null=True since assigning user is difficult upon creation of this model. assign the author when creating an instance
+    )
+	
+	content = models.TextField(blank=True) # blank=True : not required column
+
+	comment_amount = models.IntegerField(default=0)
+	is_public = models.BooleanField(default=False)
+
+	modified_at = models.DateTimeField(auto_now=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+
+class Comment(models.Model):
+	content = models.TextField(blank=True)
+	user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+    )
+	created_at = models.DateTimeField(auto_now_add=True)
+```
 - `./manage.py makemigrations` then `./manage.py migrate`
-  - Optional, you can create a super user to access to local database.
+  - (Optional) you can create a super user to access local database (but not Amazon RDS).
 
 ## Deploy To Elastic Beanstalk
 
