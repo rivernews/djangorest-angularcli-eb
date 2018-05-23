@@ -20,7 +20,7 @@ If you want to show hidden files in Mac, press Command + Shift + .
 - [Setup Database](#setup-database)
 - [Setup RESTful framework](#setup-restful-framework)
 - [Deploy To Elastic Beanstalk](#deploy-to-elastic-beanstalk)
-    - [Connect to database on Amazon RDS from GUI Client or Heroku](#connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
+    - [Connect to database on Amazon RDS from GUI Client or Heroku](#optional-connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
 - [NEXT Angular](#next-angular)
 
 ## Setup New Git Repo
