@@ -304,6 +304,9 @@ Or, more convenient, you can let Django always connect to Amazon RDS even develo
 - get a decent database GUI client. DBeaver is OK. Can try [PgAdmin](https://www.pgadmin.org/) or [Postico](https://eggerapps.at/postico/).
   - test the connection. just hardcode the credentials e.g. db name/password obtained from the RDS console.
   - if timeout or can't connect, try to reboot the database on RDS and retry.
+
+#### Always connect to RDS in django locally
+
 - if you want to connect locally in django, setup for ssl as below. If you need certificate root, see [this post](https://stackoverflow.com/questions/4323737/how-to-connect-django-to-a-mysql-database-over-an-ssl-connection).
 ```
 DATABASES = {
@@ -315,10 +318,10 @@ DATABASES = {
     }
 }
 ```
-- (Optional) you can create a superuser to access database through django admin.
-  - make sure you are only connecting to RDS. Delete the default sqlite `DATABASES` in django setting.
+- make sure you are only connecting to RDS. Delete the default sqlite `DATABASES` in django setting.
   - test in `./manage.py runserver` if no error.
-  - setup fields to show in django admin console.
+- (Optional) you can create a superuser to access database through django admin. Run `./manage.py createsuperuser`.
+- (Optional) setup fields to show in django admin console.
 
 in `account/admin.py`
 ```
@@ -350,7 +353,6 @@ class CommentViewAdmin(admin.ModelAdmin):
 admin.site.register(Comment, CommentViewAdmin)
 ```
 
-  - run `./manage.py createsuperuser`.
   - test in `<your eb website url>/admin`
 - Done!
 - future: [separate front/back end on different platform](https://stackoverflow.com/questions/41247687/how-to-deploy-separated-frontend-and-backend)
