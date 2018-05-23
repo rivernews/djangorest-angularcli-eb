@@ -1,8 +1,8 @@
 # for django and restful
 #
-django==1.11.13
+django<2
 djangorestframework
-django-cors-headers==2.2.0
+django-cors-headers
 
 # for AWS Elastic Beanstalk 
 #
