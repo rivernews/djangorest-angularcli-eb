@@ -307,7 +307,9 @@ Using Postgres database here.
 
 ### (Optional) Linking a domain name to EB website
 
-Follow [this tutorial](https://medium.com/@ryan_waits/using-aws-elastic-beanstalk-and-namecheap-to-deploy-and-host-your-node-js-app-dc4129d0eb2c). You can refer to [this article](https://nikhilmopidevi.github.io/2017/10/15/Namecheap-Domain-with-AWS/) too, but please mainly follow the first article (some parts are contradicted).
+- Follow [this tutorial](https://medium.com/@ryan_waits/using-aws-elastic-beanstalk-and-namecheap-to-deploy-and-host-your-node-js-app-dc4129d0eb2c). You can refer to [this article](https://nikhilmopidevi.github.io/2017/10/15/Namecheap-Domain-with-AWS/) too, but please mainly follow the first article (some parts are contradicted).
+
+- Add your newly added domain to django setting `ALLOWED_HOSTS`.
 
 ## Setup RESTful framework
 
