@@ -352,7 +352,7 @@ class CommentViewAdmin(admin.ModelAdmin):
 
 admin.site.register(Comment, CommentViewAdmin)
 ```
-
+  - update the code on eb. `eb deploy`.
   - test in `<your eb website url>/admin`
 - Done!
 - future: [separate front/back end on different platform](https://stackoverflow.com/questions/41247687/how-to-deploy-separated-frontend-and-backend)
