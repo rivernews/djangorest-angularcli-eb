@@ -299,7 +299,6 @@ Using Postgres database here.
 - get a decent database GUI client. DBeaver is OK. Can try [PgAdmin](https://www.pgadmin.org/).
   - test the connection. just hardcode the credentials e.g. db name/password obtained from the RDS console.
 - Done!
-- **TODO: Domain name - it's ugly now. how to change it?**
 - future: [separate front/back end on different platform](https://stackoverflow.com/questions/41247687/how-to-deploy-separated-frontend-and-backend)
   - Frontend: GitHub Pages + CloudFlare
   - Backend: beanstalk
@@ -326,7 +325,6 @@ AUTHENTICATION_BACKENDS = [
   - Test query URLs in server with the built-in browsable api webpage!
 - TODO: see how we can use it, to do CRUD operations. Try following [this](https://wsvincent.com/django-rest-framework-tutorial/) first to implement CRUD. To learn more about RESTful class views, use [this tutorial](https://www.techiediaries.com/tutorial-django-rest-framework-building-products-manager-api/) to figure out the RESTful class view by looking at their functional programming alternatives.
 - TODO: Setup security: require login or certain user to access API.
-- **TODO: Angular try to request a POST, see if no error**
 
 ## NEXT Angular
 
