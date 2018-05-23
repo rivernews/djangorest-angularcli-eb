@@ -201,8 +201,9 @@ class Comment(models.Model):
     )
 	created_at = models.DateTimeField(auto_now_add=True)
 ```
-- `./manage.py makemigrations` then `./manage.py migrate`
+- If you want to test RESTful or other functions that require access to database table, and you just want to test in local, you can now do `./manage.py makemigrations` then `./manage.py migrate`.
   - (Optional) you can create a super user to access local database (but not Amazon RDS).
+- Otherwise if you want to connect to an existing database which already has tables and schema, you don't need `makemigrations`. But **make sure your models are consistent with that database**. To connect to the databaase, refer to section [Connect to database on Amazon RDS from GUI Client or Heroku](#connect-to-database-on-amazon-rds-from-gui-client-or-heroku).
 - Test if everything is alright! `./manage runserver`
 
 ## Deploy To Elastic Beanstalk
@@ -263,12 +264,12 @@ if 'RDS_DB_NAME' in os.environ:
     # deployed on amz
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
+          'ENGINE': 'django.db.backends.postgresql_psycopg2',
+          'NAME': os.environ['RDS_DB_NAME'],
+          'USER': os.environ['RDS_USERNAME'],
+          'PASSWORD': os.environ['RDS_PASSWORD'],
+          'HOST': os.environ['RDS_HOSTNAME'],
+          'PORT': os.environ['RDS_PORT'],
         }
     }
 ```
@@ -286,6 +287,8 @@ if 'RDS_DB_NAME' in os.environ:
 
 ### Connect to database on Amazon RDS from GUI Client or Heroku
 
+[RDS, Amazon Relational Database Service](https://aws.amazon.com/rds/)
+
 You probably want to do this to create a super user on the newly created RDS database of our deployment (still you can use something like `eb ssl` to connect to EB shell but it's more complicated). If you have a superuser permission, you can make good use of Django's Admin console to view the data entries in database. Using Postgres database here.
 
 Or, more convenient, you can let Django always connect to Amazon RDS even developing on local, so you are always synced and have single database settings over development and production.
@@ -300,6 +303,19 @@ Or, more convenient, you can let Django always connect to Amazon RDS even develo
     - turn on ssl, use `sslmode=require` *the amz official and heroku ask you to use `sslmode=verify-full`; then download a [certificate](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.SSL) and using it with the connection by specifying its file path in `sslrootcert=...`; however, you can just use `require` if that works for you*
 - get a decent database GUI client. DBeaver is OK. Can try [PgAdmin](https://www.pgadmin.org/) or [Postico](https://eggerapps.at/postico/).
   - test the connection. just hardcode the credentials e.g. db name/password obtained from the RDS console.
+  - if timeout or can't connect, try to reboot the database on RDS and retry.
+- if you want to connect locally in django, setup for ssl as below. If you need certificate root, see [this post](https://stackoverflow.com/questions/4323737/how-to-connect-django-to-a-mysql-database-over-an-ssl-connection).
+```
+DATABASES = {
+    'default': {
+      ...
+      'OPTIONS': {
+          'sslmode': 'require',
+      }
+    }
+}
+```
+  - (Optional) you can create a superuser to access database through django admin `./manage.py createsuperuser`.
 - Done!
 - future: [separate front/back end on different platform](https://stackoverflow.com/questions/41247687/how-to-deploy-separated-frontend-and-backend)
   - Frontend: GitHub Pages + CloudFlare

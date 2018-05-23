@@ -4,6 +4,8 @@
 frontend-bundle-dist
 .DS_Store
 .vscode
+*credential*
+*secret*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
