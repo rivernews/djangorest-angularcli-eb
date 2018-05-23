@@ -132,6 +132,16 @@ url(r'^$', serve, kwargs={'path': 'index.html'}), # use static to serve template
 Setup database models. Our policy: we'll create one app for dealing with user account and one app for api. Depending on your needs, you can create other django apps like blog for posts, ..., etc. Also, models (defines database table schema) will live in each app it relates to, e.g., `CustomUser` model will live in `account/model.py`, `Post` model will live in `blog/model.py`.
 
 - create app by `./manage.py startapp account`
+- create app by `./manage.py startapp api`
+- create app by `./manage.py startapp blog`. This is optional. You may want other app names based on your project needs. In this instruction we'll use blog as an example to build a blog in our website.
+- add these app to django settings `INSTALLED_APPS`:
+```
+...
+'account',
+'api',
+'blog',
+...
+```
   - edit `account/model.py`, following [this SO post](https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django).
 ```
 from django.db import models
@@ -158,8 +168,6 @@ class CustomUser(AbstractUser):
 ```
 AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
 ```
-  - create app by `./manage.py startapp api`
-  - create app by `./manage.py startapp blog`. This is optional. You may want other app names based on your project needs. In this instruction we'll use blog as an example to build a blog in our website.
     - Setup `blog/model.py` for posts, add a `Post` class and specify necessary fields.
 ```
 from django.conf import settings
