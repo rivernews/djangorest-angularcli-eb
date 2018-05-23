@@ -168,7 +168,14 @@ AUTHENTICATION_BACKENDS = [
 
 We'll mainly use [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutorial-django-elastic-beanstalk/) to deploy Django to Elastic Beanstalk.
 
-### Deploy by creating new database
+We currently have two successful deployments, one in [Ohio](http://iriversland2-dev.us-east-2.elasticbeanstalk.com/) and another in [Oregon](http://iriversland2-dev.us-west-2.elasticbeanstalk.com/).
+
+You have several options regarding database and the website:
+- Create database upon first deployment
+  - If you need to migrate from other RDS database, restore them in management console and migrate. This is the Amazon recommended way.
+- Don't create database when deploying
+  - Connect to an existing RDS database: hardcode the database credentials in django setting.
+  - Connecting to external database: hardcode credentials in django setting.
 
 Have your model.py ready, and please keep reading if you have existing data to import. This instruction we create a new database (if you already have a online database to use please skip db creation parts). If you need to import data, you may want to use local database GUI client. This instruction we use PostgreSQL, you can use DBeaver (use Java) or PgAdmim.
 
@@ -182,6 +189,7 @@ Have your model.py ready, and please keep reading if you have existing data to i
     - follow tutorial steps
     - save secret keys, enter these keys in console prompt
 - Local project config for eb
+  - django settings add CNAME (website domain URL) to `ALLOWED_HOSTS`
   - create the folder & file `.ebextensions/python.config`
   - in `python.config` write
 ```
@@ -229,26 +237,6 @@ if 'RDS_DB_NAME' in os.environ:
 *this will start deploying to eb for the very first time.*
 
 - From now on, do your work, commit git, then do `eb deploy`
-
-
-### Deploy with no database and model
-
-This is a simplify/skipped version of previous section. For details on each step you can refer to previous section [Deploy by creating new database](#deploy-by-creating-new-database)
-
-- remember to put `requirements.txt` in backend subfolder! 
-- go to subfolder for django backend, `eb init`, fill in all info.
-  - refer to previous section for more info.
-- edit local `python.config` without including migrate command under `container_commands:`
-- double check django settings you have `www` in `STATIC_ROOT`
-- `eb create --scale 1`
-  - refer to previous section for more info.
-- test your deployed website! **TODO: We stopped here!**
-- from now on, do git add commit push, then `eb deploy`
-
-
-### TODO: Attach an existing database to website
-
-
 
 
 ### Connect to database on Amazon RDS from GUI Client or Heroku
