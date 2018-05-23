@@ -21,9 +21,9 @@ If you want to show hidden files in Mac, press Command + Shift + .
 - [Setup Django](#setup-django)
 - [Bootstrap Angular under Django](#bootstrap-angular-under-django)
 - [Setup Database](#setup-database)
-- [Setup RESTful framework](#setup-restful-framework)
 - [Deploy To Elastic Beanstalk](#deploy-to-elastic-beanstalk)
     - [Connect to database on Amazon RDS from GUI Client or Heroku](#optional-connect-to-database-on-amazon-rds-from-gui-client-or-heroku)
+- [Setup RESTful framework](#setup-restful-framework)
 - [NEXT Angular](#next-angular)
 
 ## Setup New Git Repo
@@ -73,14 +73,14 @@ awsebcli
 *words in **bold** are needed after editing Angular code and want to run the project in Django.*
 
 - In git repo root directory, run `ng new frontend`
-- `ng serve --open` to start Node server and open in browser, if tested OK then `ctrl+c` to close it.
+- Change to frontend folder `cd frontend`, then `ng serve --open` to start Node server and open in browser, if tested OK then `ctrl+c` to close it.
 - In `angular.json` change the /dist/ output path:
 ```
 ...
 "outputPath": "../backend/frontend-bundle-dist",
 ...
 ```
-- `cd frontend`, then **`ng build` to create frontend distribution bundles**
+- In `/frontend`, run **`ng build` to create frontend distribution bundles**
 
 ## Setup Django
 
@@ -129,8 +129,6 @@ url(r'^$', serve, kwargs={'path': 'index.html'}), # use static to serve template
 
 ## Setup Database
 
-**TODO: skipped**
-
 Setup database models. Our policy: we'll create one app for dealing with user account and one app for api. Depending on your needs, you can create other django apps like blog for posts, ..., etc. Also, models (defines database table schema) will live in each app it relates to, e.g., `CustomUser` model will live in `account/model.py`, `Post` model will live in `blog/model.py`.
 
 - create app by `./manage.py startapp account`
@@ -144,28 +142,6 @@ AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
     - Setup `blog/model.py` for posts, add a `Post` class and specify necessary fields.
 - `./manage.py makemigrations` then `./manage.py migrate`
   - Optional, you can create a super user to access to local database.
-
-## Setup RESTful framework
-
-**TODO: skipped**
-
-Following [official quickstart tutorial](http://www.django-rest-framework.org/tutorial/quickstart/). Particularly, focus on the high level:
-
-- Setup
-  - in `settings.py` add
-```
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend', # by default use username to authenticate login
-]
-```
-- Attach RESTful to existing models - let's try `CustomUser` or/and `Post` you created in previous section.
-  - Create serializer for that model
-  - Create view or viewset, then fetch model and the serializer in view class.
-  - Setup url routing
-  - Test query URLs in server with the built-in browsable api webpage!
-- TODO: see how we can use it, to do CRUD operations. Try following [this](https://wsvincent.com/django-rest-framework-tutorial/) first to implement CRUD. To learn more about RESTful class views, use [this tutorial](https://www.techiediaries.com/tutorial-django-rest-framework-building-products-manager-api/) to figure out the RESTful class view by looking at their functional programming alternatives.
-- TODO: Setup security: require login or certain user to access API.
-- **TODO: Angular try to request a POST, see if no error**
 
 ## Deploy To Elastic Beanstalk
 
@@ -262,6 +238,29 @@ Using Postgres database here.
   - Frontend: GitHub Pages + CloudFlare
   - Backend: beanstalk
   - Cross domain setting: jwt
+
+
+## Setup RESTful framework
+
+**TODO: skipped**
+
+Following [official quickstart tutorial](http://www.django-rest-framework.org/tutorial/quickstart/). Particularly, focus on the high level:
+
+- Setup
+  - in `settings.py` add
+```
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend', # by default use username to authenticate login
+]
+```
+- Attach RESTful to existing models - let's try `CustomUser` or/and `Post` you created in previous section.
+  - Create serializer for that model
+  - Create view or viewset, then fetch model and the serializer in view class.
+  - Setup url routing
+  - Test query URLs in server with the built-in browsable api webpage!
+- TODO: see how we can use it, to do CRUD operations. Try following [this](https://wsvincent.com/django-rest-framework-tutorial/) first to implement CRUD. To learn more about RESTful class views, use [this tutorial](https://www.techiediaries.com/tutorial-django-rest-framework-building-products-manager-api/) to figure out the RESTful class view by looking at their functional programming alternatives.
+- TODO: Setup security: require login or certain user to access API.
+- **TODO: Angular try to request a POST, see if no error**
 
 ## NEXT Angular
 
