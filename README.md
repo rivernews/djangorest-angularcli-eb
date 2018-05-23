@@ -2,7 +2,7 @@
 
 If you use this template as seed, git clone/fork it and you can start from section [Setup Environment](#setup-environment):
 ```
-git clone https://github.com/rivernews/djangorest-angularcli-eb-seed.git
+git clone https://github.com/rivernews/djangorest-angularcli-eb-seed.git <your new repo name>
 ```
 
 If you need to change the git repo to push to, use
