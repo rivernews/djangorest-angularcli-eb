@@ -315,12 +315,12 @@ DATABASES = {
     }
 }
 ```
-  - (Optional) you can create a superuser to access database through django admin.
-    - make sure you are only connecting to RDS. Delete the default sqlite `DATABASES` in django setting.
-    - test in `./manage.py runserver` if no error.
-    - setup fields to show in django admin console.
-      - in `account/admin.py`, 
+- (Optional) you can create a superuser to access database through django admin.
+  - make sure you are only connecting to RDS. Delete the default sqlite `DATABASES` in django setting.
+  - test in `./manage.py runserver` if no error.
+  - setup fields to show in django admin console.
 
+in `account/admin.py`
 ```
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
@@ -331,7 +331,7 @@ from .models import CustomUser
 admin.site.register(CustomUser, UserAdmin)
 ```
 
-      - in `blog/admin.py`
+in `blog/admin.py`
 ```
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
@@ -349,7 +349,9 @@ class CommentViewAdmin(admin.ModelAdmin):
 
 admin.site.register(Comment, CommentViewAdmin)
 ```
-    - run `./manage.py createsuperuser`.
+
+  - run `./manage.py createsuperuser`.
+  - test in `<your eb website url>/admin`
 - Done!
 - future: [separate front/back end on different platform](https://stackoverflow.com/questions/41247687/how-to-deploy-separated-frontend-and-backend)
   - Frontend: GitHub Pages + CloudFlare
