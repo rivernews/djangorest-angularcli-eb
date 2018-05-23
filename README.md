@@ -305,7 +305,7 @@ Or, more convenient, you can let Django always connect to Amazon RDS even develo
   - test the connection. just hardcode the credentials e.g. db name/password obtained from the RDS console.
   - if timeout or can't connect, try to reboot the database on RDS and retry.
 
-#### Always connect to RDS in django locally
+#### (Optional) Always connect to RDS in django locally
 
 - if you want to connect locally in django, setup for ssl as below. If you need certificate root, see [this post](https://stackoverflow.com/questions/4323737/how-to-connect-django-to-a-mysql-database-over-an-ssl-connection).
 ```
