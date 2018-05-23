@@ -220,9 +220,10 @@ You have several options regarding database and the website:
 
 Have your model.py ready, and please keep reading if you have existing data to import. This instruction we create a new database (if you already have a online database to use please skip db creation parts). If you need to import data, you may want to use local database GUI client. This instruction we use PostgreSQL, you can use DBeaver (use Java) or PgAdmim.
 
-- If you cloned this seed template, you don't need to do the following. Copy `requirements.txt` into django root directory (in `git_repo_root/backend`). We will only deploy the code in `backend/`.
+- *If you cloned this seed template, you don't need to do this step.* Copy `requirements.txt` into django root directory (in `git_repo_root/backend`). We will only deploy the code in `backend/`.
 - Get in django root `cd backend` and `eb init` will give interactive prompt:
-  - select data center location. Use US East (Ohio) to have best proximity for Mid-West area.
+  - select data center location. 
+    - Use US East (Ohio) to have best proximity for Mid-West area. `us-east-2 : US East (Ohio)`.
   - choose CNAME (prefix for the website URL)
   - get a aws credential and insert. IAM. Follow [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutorial-django-elastic-beanstalk/). If you already have aws credential, you can skip steps below and enter those keys.
     - Go to [IAM website](https://console.aws.amazon.com/iam/home)
@@ -231,6 +232,7 @@ Have your model.py ready, and please keep reading if you have existing data to i
     - save secret keys, enter these keys in console prompt
 - Local project config for eb
   - django settings add CNAME (website domain URL) to `ALLOWED_HOSTS`
+    - for example (Ohio), `http://<your app name>.us-east-2.elasticbeanstalk.com`
   - create the folder & file `.ebextensions/python.config`
   - in `python.config` write
 ```
