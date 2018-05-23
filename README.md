@@ -207,6 +207,8 @@ class Comment(models.Model):
 
 ## Deploy To Elastic Beanstalk
 
+[Elastic Beanstalk Console Page](https://console.aws.amazon.com/elasticbeanstalk/home)
+
 We'll mainly use [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutorial-django-elastic-beanstalk/) to deploy Django to Elastic Beanstalk.
 
 We currently have two successful deployments, one in [Ohio](http://iriversland2-dev.us-east-2.elasticbeanstalk.com/) and another in [Oregon](http://iriversland2-dev.us-west-2.elasticbeanstalk.com/).
@@ -287,12 +289,12 @@ if 'RDS_DB_NAME' in os.environ:
 Using Postgres database here.
 
 - Edit amazon RDS permission, follow instructions below or see [heroku doc](https://devcenter.heroku.com/articles/amazon-rds) or [here](https://stackoverflow.com/questions/47661151/connecting-to-rds-postgres-from-heroku)
-  1. let RDS always require SSL
+  - let RDS always require SSL
     - **Amazon RDS/Parameter Groups**: Create a new parameter group to [force ssl](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.SSL), if you don’t already have such group.
     - **Amazon RDS/Instance/modify database/DB parameter group:** enable group for ssl
-  2. reboot the RDS instance immediately to force SSL!
-  3. let RDS allow all inbound IP: Security Group (the one used by db)/Inbound: create rule for all traffic.
-  4. let local/client db connection use SSL
+  - reboot the RDS instance immediately to force SSL!
+  - let RDS allow all inbound IP: Security Group (the one used by db)/Inbound: create rule for all traffic.
+  - let local/client db connection use SSL
     - turn on ssl, use `sslmode=require` *the amz official and heroku ask you to use `sslmode=verify-full`; then download a [certificate](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.SSL) and using it with the connection by specifying its file path in `sslrootcert=...`; however, you can just use `require` if that works for you*
 - get a decent database GUI client. DBeaver is OK. Can try [PgAdmin](https://www.pgadmin.org/).
   - test the connection. just hardcode the credentials e.g. db name/password obtained from the RDS console.
