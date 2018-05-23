@@ -220,7 +220,7 @@ You have several options regarding database and the website:
 
 Have your model.py ready, and please keep reading if you have existing data to import. This instruction we create a new database (if you already have a online database to use please skip db creation parts). If you need to import data, you may want to use local database GUI client. This instruction we use PostgreSQL, you can use DBeaver (use Java) or PgAdmim.
 
-- Copy `requirements.txt` into django root directory (in `git_repo_root/backend`). We will only deploy the code in `backend/`.
+- If you cloned this seed template, you don't need to do the following. Copy `requirements.txt` into django root directory (in `git_repo_root/backend`). We will only deploy the code in `backend/`.
 - Get in django root `cd backend` and `eb init` will give interactive prompt:
   - select data center location. Use US East (Ohio) to have best proximity for Mid-West area.
   - choose CNAME (prefix for the website URL)
