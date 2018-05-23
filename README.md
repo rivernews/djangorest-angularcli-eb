@@ -203,6 +203,7 @@ class Comment(models.Model):
 ```
 - `./manage.py makemigrations` then `./manage.py migrate`
   - (Optional) you can create a super user to access local database (but not Amazon RDS).
+- Test if everything is alright! `./manage runserver`
 
 ## Deploy To Elastic Beanstalk
 
