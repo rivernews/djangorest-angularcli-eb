@@ -142,6 +142,12 @@ Setup database models. Our policy: we'll create one app for dealing with user ac
 'blog',
 ...
 ```
+
+- edit django settings.py
+```
+AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
+```
+
   - edit `account/model.py`, following [this SO post](https://stackoverflow.com/questions/45722025/forcing-unique-email-address-during-registration-with-django).
 ```
 from django.db import models
@@ -164,11 +170,9 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 ```
-  - edit django settings.py
-```
-AUTH_USER_MODEL = 'account.CustomUser' # override the default user model
-```
-    - Setup `blog/model.py` for posts, add a `Post` class and specify necessary fields.
+
+  - Setup `blog/model.py` for posts, add a `Post` class and specify necessary fields.
+
 ```
 from django.conf import settings
 from django.db import models
