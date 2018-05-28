@@ -2,6 +2,7 @@
 
 [Angular Hero Tutorial](https://angular.io/tutorial)
 [Angular Material Getting Started](https://material.angular.io/guide/getting-started)
+[Our Angular Notebook](https://medium.com/p/763e5d938b39/edit)
 
 ## Adding Angular Routing Function
 
@@ -36,6 +37,9 @@ export class AppRoutingModule { }
 
 ```
 <a routerLink="/heroes">Heroes</a>
-``
+```
 
 ## Adding new view (page) and route to it
+
+[adding a view](https://angular.io/tutorial/toh-pt5#add-the-dashboard-route)
+
