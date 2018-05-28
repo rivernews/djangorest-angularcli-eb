@@ -14,6 +14,9 @@
 1. in `app-routing.module.ts`
 
 ```
+...
+import { RouterModule, Routes } from '@angular/router';
+
 // import components
 import { HeroesComponent } from './heroes/heroes.component';
 
