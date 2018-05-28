@@ -1,7 +1,9 @@
 # Angular + Material Design Component
 
 [Angular Hero Tutorial](https://angular.io/tutorial)
+
 [Angular Material Getting Started](https://material.angular.io/guide/getting-started)
+
 [Our Angular Notebook](https://medium.com/p/763e5d938b39/edit)
 
 ## Adding Angular Routing Function
@@ -48,8 +50,27 @@ export class AppRoutingModule { }
 
 - `ng generate component dashboard`
 
-- add component's html, configure its ts.
-
 - in routing ts import the component, then register a routing path for that component
 
+- refine contents in component: edit component's html, configure its ts.
+
 - add link to route to that component, if needed.
+
+## Using Angular Material Design Components
+
+See our [Angular Notebook on Medium](https://medium.com/p/763e5d938b39/edit) for basic setup.
+
+- the suggested default app-root html is
+
+```
+<mat-sidenav-container fullscreen>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h2 class="mat-h2">{{title}}</h2>
+      <a mat-raised-button routerLink="/link_to_page_1">Page 1</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+  <footer></footer>
+</mat-sidenav-container>
+```
