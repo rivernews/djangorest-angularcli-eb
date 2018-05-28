@@ -9,7 +9,7 @@
 [add routing module](https://angular.io/tutorial/toh-pt5#add-the-approutingmodule)
 
 1. `ng generate module app-routing --module=app`
-  - in `app-routing.module.ts ` you can delete the `commonModule` and `declarations` stuff.
+  1. in `app-routing.module.ts ` you can delete the `commonModule` and `declarations` stuff.
 
 1. in `app-routing.module.ts`
 
