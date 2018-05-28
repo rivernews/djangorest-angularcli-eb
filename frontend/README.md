@@ -8,10 +8,10 @@
 
 [add routing module](https://angular.io/tutorial/toh-pt5#add-the-approutingmodule)
 
-1. `ng generate module app-routing --module=app`
-  1. in `app-routing.module.ts ` you can delete the `commonModule` and `declarations` stuff.
+- `ng generate module app-routing --module=app`
+  - in `app-routing.module.ts ` you can delete the `commonModule` and `declarations` stuff.
 
-1. in `app-routing.module.ts`
+- in `app-routing.module.ts`
 
 ```
 ...
@@ -34,9 +34,9 @@ const routes: Routes = [
 export class AppRoutingModule { }
 ```
 
-1. add `<router-outlet></router-outlet>` in `app.component.html`
+- add `<router-outlet></router-outlet>` in `app.component.html`
 
-1. whenever you want to route through a link, you can now do 
+- whenever you want to route through a link, you can now do 
 
 ```
 <a routerLink="/heroes">Heroes</a>
@@ -46,10 +46,10 @@ export class AppRoutingModule { }
 
 [adding a view](https://angular.io/tutorial/toh-pt5#add-the-dashboard-route)
 
-1. `ng generate component dashboard`
+- `ng generate component dashboard`
 
-1. add component's html, configure its ts.
+- add component's html, configure its ts.
 
-1. in routing ts import the component, then register a routing path for that component
+- in routing ts import the component, then register a routing path for that component
 
-1. add link to route to that component, if needed.
+- add link to route to that component, if needed.
