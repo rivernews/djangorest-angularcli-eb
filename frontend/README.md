@@ -46,3 +46,10 @@ export class AppRoutingModule { }
 
 [adding a view](https://angular.io/tutorial/toh-pt5#add-the-dashboard-route)
 
+1. `ng generate component dashboard`
+
+1. add component's html, configure its ts.
+
+1. in routing ts import the component, then register a routing path for that component
+
+1. add link to route to that component, if needed.
