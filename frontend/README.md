@@ -6,6 +6,13 @@
 
 [Our Angular Notebook](https://medium.com/p/763e5d938b39/edit)
 
+Additional NPM Packages Required Besides Angular CLI
+```
+@angular/material @angular/cdk @angular/animations
+font-awesome
+```
+Use `npm i -D <packages>` to install.
+
 ## Adding Angular Routing Function
 
 [add routing module](https://angular.io/tutorial/toh-pt5#add-the-approutingmodule)
@@ -79,5 +86,35 @@ See our [Angular Notebook on Medium](https://medium.com/p/763e5d938b39/edit) for
 
 - [Use SCSS as angular's default styling sheet](https://stackoverflow.com/questions/46760306/get-material-2-theme-color-scheme-palette-for-other-elements)
 
-- [Use Awesome font in mat-icon](https://theinfogrid.com/tech/developers/angular/material-icons-angular-5/)
-  - [Set Awesome font to default in mat-icon](https://stackoverflow.com/questions/43837076/how-to-correctly-register-font-awesome-for-md-icon)
+####[Use Awesome font in mat-icon](https://theinfogrid.com/tech/developers/angular/material-icons-angular-5/)
+
+- Install awesome font, if you haven't.
+- add `"node_modules/font-awesome/scss/font-awesome.scss",` in `angular-cli.json`. Add to the `styles` list under `build`.
+- Make sure you imported `MatIconModule` in angular root ts.
+- Import material's icon service in angular root module ts, or wherever module you import material components:
+```
+import { MatIconRegistry } from "@angular/material";
+```
+  - we'll have to register Awesome Font in the module as well:
+
+```
+export class GoogleMaterialDesignModule {
+  constructor(
+    public matIconRegistry: MatIconRegistry,
+  ){
+    matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+
+    // avoid typing fontSet="fa"
+    this.matIconRegistry.setDefaultFontSetClass('fa');
+  }
+}
+
+```
+- Now, you can use icons by doing the following:
+```
+<mat-icon fontIcon="fa-home"></mat-icon>
+```
+
+- If you need more icon, however, it will require Awesome Font 5 and needs additional settings.
+
+####[Set Awesome font to default in mat-icon](https://stackoverflow.com/questions/43837076/how-to-correctly-register-font-awesome-for-md-icon)

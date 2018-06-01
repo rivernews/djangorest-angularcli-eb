@@ -72,7 +72,13 @@ awsebcli
 
 *words in **bold** are needed after editing Angular code and want to run the project in Django.*
 
-- In git repo root directory, run `ng new frontend`
+- Use of `scss` is much more favorable. To set default style sheet globally for all angular projects, do
+```
+ng config schematics.@schematics/angular:component.styleext scss # or the same as ng config schematics.@schematics/angular:component '{ styleext: "scss"}'
+
+```
+  - If you really need to convert to `scss` for existing project, see [here](https://stackoverflow.com/questions/36220256/angular-cli-sass-options) and [here](https://stackoverflow.com/questions/46760306/get-material-2-theme-color-scheme-palette-for-other-elements).
+- In git repo root directory, run `ng new frontend --style=scss`
 - Change to frontend folder `cd frontend`, then `ng serve --open` to start Node server and open in browser, if tested OK then `ctrl+c` to close it.
 - In `angular.json` change the /dist/ output path:
 ```
