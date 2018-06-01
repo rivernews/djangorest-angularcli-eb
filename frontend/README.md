@@ -74,3 +74,10 @@ See our [Angular Notebook on Medium](https://medium.com/p/763e5d938b39/edit) for
   <footer></footer>
 </mat-sidenav-container>
 ```
+
+###Styling
+
+- [Use SCSS as angular's default styling sheet](https://stackoverflow.com/questions/46760306/get-material-2-theme-color-scheme-palette-for-other-elements)
+
+- [Use Awesome font in mat-icon](https://theinfogrid.com/tech/developers/angular/material-icons-angular-5/)
+  - [Set Awesome font to default in mat-icon](https://stackoverflow.com/questions/43837076/how-to-correctly-register-font-awesome-for-md-icon)
