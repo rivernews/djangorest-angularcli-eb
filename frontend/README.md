@@ -85,6 +85,9 @@ See our [Angular Notebook on Medium](https://medium.com/p/763e5d938b39/edit) for
 ### Styling
 
 - [Use SCSS as angular's default styling sheet](https://stackoverflow.com/questions/46760306/get-material-2-theme-color-scheme-palette-for-other-elements)
+you might want to run `ng config schematics.@schematics/angular:component.styleext scss` for latest Angular.
+
+#### How to use Material's theme to components?
 
 #### [Use Awesome font in mat-icon](https://theinfogrid.com/tech/developers/angular/material-icons-angular-5/)
 
@@ -122,3 +125,4 @@ export class GoogleMaterialDesignModule {
 # Reference
 
 - How to update Angular and Angular CLI. [Angular CLI Official Git](https://github.com/angular/angular-cli)
+  - You might have to udpate for both global and local.
