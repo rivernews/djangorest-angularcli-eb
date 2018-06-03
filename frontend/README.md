@@ -1,12 +1,12 @@
 # Angular + Material Design Component
 
-[Angular Hero Tutorial](https://angular.io/tutorial)
+- [Angular Hero Tutorial](https://angular.io/tutorial)
 
-[Angular Material Getting Started](https://material.angular.io/guide/getting-started)
+- [Angular Material Getting Started](https://material.angular.io/guide/getting-started)
 
-[Our Angular Notebook](https://medium.com/p/763e5d938b39/edit)
+- [Our Angular Notebook](https://medium.com/p/763e5d938b39/edit)
 
-Additional NPM Packages Required Besides Angular CLI
+- Additional NPM Packages Required Besides Angular CLI
 ```
 @angular/material @angular/cdk @angular/animations
 font-awesome
@@ -82,11 +82,11 @@ See our [Angular Notebook on Medium](https://medium.com/p/763e5d938b39/edit) for
 </mat-sidenav-container>
 ```
 
-###Styling
+### Styling
 
 - [Use SCSS as angular's default styling sheet](https://stackoverflow.com/questions/46760306/get-material-2-theme-color-scheme-palette-for-other-elements)
 
-####[Use Awesome font in mat-icon](https://theinfogrid.com/tech/developers/angular/material-icons-angular-5/)
+#### [Use Awesome font in mat-icon](https://theinfogrid.com/tech/developers/angular/material-icons-angular-5/)
 
 - Install awesome font, if you haven't.
 - add `"node_modules/font-awesome/scss/font-awesome.scss",` in `angular-cli.json`. Add to the `styles` list under `build`.
