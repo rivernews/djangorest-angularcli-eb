@@ -117,4 +117,4 @@ export class GoogleMaterialDesignModule {
 
 - If you need more icon, however, it will require Awesome Font 5 and needs additional settings.
 
-####[Set Awesome font to default in mat-icon](https://stackoverflow.com/questions/43837076/how-to-correctly-register-font-awesome-for-md-icon)
+#### [Set Awesome font to default in mat-icon](https://stackoverflow.com/questions/43837076/how-to-correctly-register-font-awesome-for-md-icon)
