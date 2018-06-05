@@ -1,19 +1,15 @@
+ve=".venv"
+deactivate
 if [ -f "requirements.txt" ]; then
-    echo "requirements.txt detected"
-    if [ -d ".venv" ]; then
-        . .venv/bin/activate && pip install -r requirements.txt
-        echo "finished and installed required Python packages. Please check and try to run your code."
-        echo "use deactivate to turn off virtual environment."
+    echo "INFO: requirements.txt detected"
+    if [ -d $ve ]; then
+        echo "INFO: Virtual environment detected. Activating and installing packages..." && . $ve/bin/activate && pip install -r requirements.txt && echo "SUCCESS: Finished and installed required Python packages. Use deactivate to turn off virtual environment." && return
+        echo "ERROR: The setup is interrupted. See error message above." && return
     else
-        echo "will create virtual environment and install required Python package for you ..."
-        python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
-        if [ -d ".venv" ]; then
-            echo "finished and installed required Python packages. Please check and try to run your code."
-            echo "use deactivate to turn off virtual environment."
-        else
-            echo "failed creating virtual environment!"
-        fi
+        echo "INFO: No virtual environment yet. Will create one for you and install required Python package..."
+        python3 -m venv $ve && . $ve/bin/activate && pip install -r requirements.txt && echo "SUCCESS: Finished and installed required Python packages. Use deactivate to turn off virtual environment." && return
+        echo "ERROR: The setup is interrupted. See error message above." && return
     fi
 else 
-    echo "please provide requirements.txt"
+    echo "ERROR: Please provide requirements.txt"
 fi

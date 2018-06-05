@@ -78,7 +78,7 @@ ng config schematics.@schematics/angular:component.styleext scss # or the same a
 
 ```
   - If you really need to convert to `scss` for existing project, see [here](https://stackoverflow.com/questions/36220256/angular-cli-sass-options) and [here](https://stackoverflow.com/questions/46760306/get-material-2-theme-color-scheme-palette-for-other-elements).
-- In git repo root directory, run `ng new frontend --style=scss`
+- In git repo root directory, run `ng new frontend --style=scss --routing`
 - Change to frontend folder `cd frontend`, then `ng serve --open` to start Node server and open in browser, if tested OK then `ctrl+c` to close it.
 - In `angular.json` change the /dist/ output path:
 ```
