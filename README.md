@@ -290,6 +290,13 @@ if 'RDS_DB_NAME' in os.environ:
 
 - From now on, do your work, commit git, then do `eb deploy`
 
+### Switch between different environment
+
+In eb, one environment ties to one website / url. This is useful for testing your code online.
+
+To deploy your code base on new site on eb, you can `eb create`, give a new name of environment, then use `eb use <your new environment name>`, finally `eb deploy`.
+
+See [this clear concise tutorial](https://colintoh.com/blog/how-to-deploy-application-to-aws-elastic-beanstalk) for more.
 
 ### Connect to database on Amazon RDS from GUI Client or Heroku
 

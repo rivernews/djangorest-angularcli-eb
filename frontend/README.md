@@ -71,6 +71,11 @@ export class AppRoutingModule { }
 <a routerLink="/heroes">Heroes</a>
 ```
 
+## Adding Service
+
+In Angular 6 `ng g s services/user`, by default it is provided as Singleton Services and already setup the provider for you. See [this post](https://stackoverflow.com/questions/42748773/angular-cli-generate-a-service-and-include-the-provider-in-one-step)
+
+
 ## Adding new view (page) and route to it
 
 [adding a view](https://angular.io/tutorial/toh-pt5#add-the-dashboard-route)
