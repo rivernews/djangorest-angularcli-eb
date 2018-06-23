@@ -88,6 +88,10 @@ In Angular 6 `ng g s services/user`, by default it is provided as Singleton Serv
 
 - add link to route to that component, if needed.
 
+## Making POST request to backend
+
+- If you're using elastic beanstalk, make sure you turn on the WSGI Authorization on. [See this post](https://stackoverflow.com/questions/22279301/authorization-credentials-stripped-django-elastic-beanstalk-oauth). If you don't do this, EB will strip off your authorization header and you always get 401 unauthorized.
+
 ## Using Angular Material Design Components
 
 See our [Angular Notebook on Medium](https://medium.com/p/763e5d938b39/edit) for basic setup.
