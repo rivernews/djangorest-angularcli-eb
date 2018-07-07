@@ -373,6 +373,13 @@ admin.site.register(Comment, CommentViewAdmin)
   - Backend: beanstalk
   - Cross domain setting: jwt
 
+#### Debug with RDS
+
+- Debug on eb, `eb ssh` then `psql -h <db endpoint> -p 5432 -U <username> -d <dbname>`
+
+- Debug on local. You have to get psql first `brew install postgresql`, then same as on eb.
+
+- basic psql command `\l` is list, `\q` is quit.
 
 ### Linking a domain name to EB website
 
