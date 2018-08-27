@@ -70,6 +70,8 @@ awsebcli
 
 ## Setup Angular
 
+`npm install -g @angular/cli`
+
 *words in **bold** are needed after editing Angular code and want to run the project in Django.*
 
 - Use of `scss` is much more favorable. To set default style sheet globally for all angular projects, do
