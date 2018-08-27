@@ -216,6 +216,10 @@ class Comment(models.Model):
 
 ## Deploy To Elastic Beanstalk
 
+- If you are resuming from an existing environment:
+
+Do `eb init` anyway, you'll be able to select existing app later. Then make sure you have aws credentials. If not, you can create an IAM user.
+
 [Elastic Beanstalk Console Page](https://console.aws.amazon.com/elasticbeanstalk/home)
 
 We'll mainly use [this tutorial](http://www.1strategy.com/blog/2017/05/23/tutorial-django-elastic-beanstalk/) to deploy Django to Elastic Beanstalk.
