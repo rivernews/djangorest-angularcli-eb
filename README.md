@@ -191,6 +191,8 @@ class Post(models.Model):
 	user = models.ForeignKey(
         settings.AUTH_USER_MODEL, # or you can use '[from django.contrib.auth import get_user_model]' then get_user_model(). but only use these in models; you should use account.model.User anywhere else.
         null=True, # you have to use null=True since assigning user is difficult upon creation of this model. assign the author when creating an instance
+
+        on_delete=models.SET_NULL # if using Django 2, you are required to add this
     )
 	
 	content = models.TextField(blank=True) # blank=True : not required column
